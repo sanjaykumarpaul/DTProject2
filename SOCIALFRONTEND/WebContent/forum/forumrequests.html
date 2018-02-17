@@ -1,0 +1,34 @@
+<h4>FORUM REQUESTS</h4>
+<div data-ng-controller="forumrequestcontroller">
+
+<div class="card card-1" style="margin-top:25px;margin-right: 25px;margin-left: 25px">
+ <table>
+        <thead>
+          <tr>
+              <th>NAME</th>
+              <th>FORUMNAME</th>
+              
+              <th></th>
+              <th></th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr  data-ng-repeat="forumreq in forumrequests">
+            <td>{{forumreq.username}}</td>
+            <td>{{forumreq.forumname}}</td>
+           
+            <td>   <a data-ng-click="acceptforumrequests(forumreq.forreqid)" ><img data-ng-src="http://localhost:8080/SOCIALFRONTEND/resources/images/approve.jpg" style="width:50px;height:50px">ACCEPT</a></td>
+            <td>   <a data-ng-click="rejectforumrequests(forumreq.forreqid)"  ><img data-ng-src="http://localhost:8080/SOCIALFRONTEND/resources/images/reject.png" style="width:50px;height:50px">REJECT</a> </td>
+         
+          </tr>
+       
+        </tbody>
+      </table>
+ 
+ 
+ 
+ 
+ </div>
+
+</div>

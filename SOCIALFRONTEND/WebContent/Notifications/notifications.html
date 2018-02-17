@@ -1,0 +1,40 @@
+<h1>LATEST NOTIFICATIONS</h1>
+<div data-ng-controller="notificationcontroller">
+
+<div class="card card-1" style="margin-top:25px;margin-right: 25px;margin-left: 25px">
+
+  <div data-ng-if="notific.length < 1">
+  <h3>NO NEW NOTIFICATIONS</h3>
+  </div>
+
+
+  <div data-ng-if="notific.length > 0">
+
+ <table>
+        
+
+        <tbody>
+        
+        
+          <tr  data-ng-repeat="nottt in notific">
+            <td><h3>{{nottt.name}}</h3></td>
+            <td>  <div class="btn-group"> <a data-ng-click="deletenoti(nottt.notid)"  class="btn btn-primary">SEEN</a></div> </td>
+           
+           
+           
+          
+          </tr>
+       
+        </tbody>
+      </table>
+
+
+  </div>
+
+ 
+ 
+ 
+ 
+ </div>
+
+</div>

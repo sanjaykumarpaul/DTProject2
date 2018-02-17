@@ -1,0 +1,52 @@
+<h4>UPDATE EVENT</h4>
+	 <div class="row">
+     
+        <div class="col m12">
+        <div class="card card-1" style="margin-top:5vh;padding-left: 20px; padding-right: 20px; padding-top: 20px; padding-bottom: 20px">
+            
+            <div class="row">
+            <div data-ng-controller="eventcontroller">
+                <form class="col s12" data-ng-submit="editeventtt(editevent.eventid)" >
+                   
+                           <div class="input-field col s6">  
+                           <div class="left-align">       
+                <input  type="text" id="eventname"  data-ng-model="Events.eventname" data-ng-value="editevent.eventname" data-ng-init="Events.eventname=editevent.eventname" required >
+                            <label for="eventname">Event name</label>
+                             </div>
+                         </div>  
+                 
+                               <div class="input-field col s12">
+                   <textarea id="eventdesc" class="materialize-textarea" data-ng-model="Events.eventdesc" data-ng-value="editevent.eventdesc" data-ng-init="Events.eventdesc=editevent.eventdesc"  required></textarea>
+          <label for="eventdesc">Event Description</label>
+            </div>
+            
+           
+               
+                         
+                                <div class="input-field col s6">  
+                             
+                <input  type="text" id="venue"  data-ng-model="Events.eventvenue" data-ng-value="editevent.eventvenue" data-ng-init="Events.eventvenue=editevent.eventvenue" required >
+                            <label for="venue">VENUE</label>
+                         
+                         </div>      
+         
+                    
+                       <div class="input-field col s6">
+                            <p class="right-align">
+                                <button class="btn btn-large waves-effect waves-light" type="submit" >SUBMIT</button>
+                            </p>
+                        </div>
+                   
+                </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    	
+    	
+    	
+    	
+	</div>

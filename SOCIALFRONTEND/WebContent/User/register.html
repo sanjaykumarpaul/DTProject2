@@ -1,0 +1,132 @@
+<script type="text/javascript">
+    function Validate() {
+    	        var password = document.getElementById("pass").value;
+        var confirmPassword = document.getElementById("conpass").value;
+        if (password != confirmPassword) {
+        	 document.getElementById("error").innerHTML = "PASSWORD MISMATCH";
+            return false;
+        }
+        return true;
+    }
+</script>
+<style>
+.sqs-block { 
+      margin-left: -30px; 
+      margin-right: -30px; 
+      margin-top: -30px; 
+      margin-bottom: -30px; 
+      }
+      
+input{ 
+      margin-left: 5px; 
+      margin-right: 5px; 
+      margin-top: 5px; 
+      margin-bottom: 5px; 
+      }
+      
+            .card-1 {
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+}
+.card-1:hover {
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+} 
+</style>
+
+<div class="container">
+    <div class="row">
+        <div class="col m6">
+                           
+
+        </div>    
+        <div class="col m6">
+        <div class="card card-1" style="height:80vh">
+           
+            <div data-ng-controller="registercontroller">
+             <form   name="regform" data-ng-submit="register()" >
+          
+                
+                   
+                        <div class="input-field col s6">
+                              <input type="text" data-ng-model="Users.firstname"  required>
+              <label for="first-name">First Name</label>
+             
+               </div> 
+               
+              
+                                  <div class="input-field col s6">
+                           
+                         <input  type="text" data-ng-model="Users.lastname"   required>
+              <label for="last-name">Last Name</label>  
+                         
+                      
+                    </div>
+                 
+                 
+              
+                 
+                       
+                   <div class="input-field col s12">         
+                <input  type="email" data-ng-model="Users.email"  required >
+                            <label for="email">Email</label>
+                             
+                         </div>  
+                     
+              
+                 
+                        <div class="input-field col s12">
+                  
+                 <input  type="password" data-ng-model="Users.password" id="pass"  required>
+                            <label for="passs">Password</label>
+                          
+                   
+                    </div>
+                    
+                      <div class="input-field col s12">
+                  
+                 <input  type="password"   id="conpass" required>
+                            <label for="pass">Re-enter Password</label>
+                          
+                   
+                    </div>
+                    
+                    
+      
+                
+            
+<centre><div id="error"></div></centre>
+   
+     
+                
+    
+                 
+                
+                 
+                    
+             
+                   
+                      
+                    
+                  
+                    
+                    
+                   
+               
+                     <div class="input-field col s12">
+                            <p class="right-align">
+                                <button class="btn btn-large waves-effect waves-light" type="submit" onclick="return Validate()">REGISTER</button>
+                            </p>
+                        </div>
+                        
+                        
+            
+                    
+                    
+                    
+                </form>
+</div>
+        
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,64 @@
+<h4>CREATE A JOB</h4>
+    <div class="row">
+     
+        <div class="col m12">
+        <div class="card card-1" style="margin-top:5vh;padding-left: 20px; padding-right: 20px; padding-top: 20px; padding-bottom: 20px">
+            
+            <div class="row">
+            <div data-ng-controller="jobcontroller">
+                <form class="col s12" data-ng-submit="insertJobs()" >
+                   
+                           <div class="input-field col s6">  
+                           <div class="left-align">       
+                <input  type="text" id="jobprofile"  data-ng-model="Job.jobprofile" required >
+                            <label for="jobprofile">Job Profile</label>
+                             </div>
+                         </div>  
+                 
+                               <div class="input-field col s12">
+                   <textarea id="jobdesc" class="materialize-textarea" data-ng-model="Job.jobdesc" required></textarea>
+          <label for="jobdesc">Job Description</label>
+            </div>
+            
+            <div class="input-field col s12">
+                   <textarea id="jobqualifications" class="materialize-textarea" data-ng-model="Job.qualification" required></textarea>
+          <label for="jobqualifications">Job Qualifications</label>
+            </div>
+                              <div class="input-field col s6">  
+                             
+                <input  type="number" id="jobsalary"  data-ng-model="Job.salary" required >
+                            <label for="jobsalary">Job Salary</label>
+                         
+                         </div>
+                         
+                                <div class="input-field col s6">  
+                             
+                <input  type="text" id="company"  data-ng-model="Job.company" required >
+                            <label for="company">Company</label>
+                         
+                         </div>      
+                   
+                      <div class="input-field col s12">
+                   <textarea id="companydesc" class="materialize-textarea" data-ng-model="Job.companydesc" required></textarea>
+          <label for="jobqualifications">Company Description</label>
+            </div>
+                    
+                       <div class="input-field col s6">
+                            <p class="right-align">
+                                <button class="btn btn-large waves-effect waves-light" type="submit" >SUBMIT</button>
+                            </p>
+                        </div>
+                   
+                </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    	
+    	
+    	
+    	
+	</div>

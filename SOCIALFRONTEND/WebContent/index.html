@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+ <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  	
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+  
+  
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.16.3/lodash.js"></script>
+	
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.js"></script>
+	
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.1.1/sockjs.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-cookies.min.js"></script>
+	
+<style>
+      .card-1 {
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+}
+.card-1:hover {
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+      
+     
+</style>
+
+
+</head>
+<body ng-app="SOCIAL" >
+<div class="align-right">
+<nav class="navbar navbar-default" >
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#!/wall">SOCIAL</a>
+    </div>
+    <ul class="nav navbar-nav navbar-right">
+    
+    
+        
+     <li><div data-ng-show="currentuser.role=='ROLE_ADMIN' || currentuser.role=='ROLE_USER' ">
+    <a href="#!/blog"  style="color:black">HOME</a>
+      </div></li>
+      
+      
+       <li><div data-ng-show="currentuser.role=='ROLE_USER' ">
+    <a href="#!/mywall"  style="color:black">MY WALL</a>
+      </div></li>
+      
+      
+    
+      
+      
+      <li><div data-ng-show="currentuser.role=='ROLE_ADMIN'">
+      <div class="dropdown">
+  <a class="dropdown-toggle"  style="color:black" data-toggle="dropdown">REQUESTS
+  <span class="caret"></span></a>
+  <ul class="dropdown-menu">
+    <li><a href="#!/blogrequests">BLOG</a></li>
+    <li><a href="#!/forumrequests">FORUM</a></li>
+    <li><a href="#!/userrequests">USERS</a></li>
+    <li><a href="#!/eventrequests">EVENTS</a></li>
+      </ul>
+</div>
+      
+      </div></li> 
+      
+      
+           <li><div data-ng-show="currentuser.role=='ROLE_ADMIN'">
+      <div class="dropdown">
+  <a class="dropdown-toggle"   style="color:black" data-toggle="dropdown">MANAGE
+  <span class="caret"></span></a>
+  <ul class="dropdown-menu">
+    <li><a href="#!/blogmanage">BLOG</a></li>
+    <li><a href="#!/forummanage">FORUM</a></li>
+    <li><a href="#!/jobmanage">JOBS</a></li>
+    <li><a href="#!/eventmanage">EVENTS</a></li>
+  </ul>
+</div>
+      
+      </div></li> 
+      
+      
+    
+      <li><div data-ng-show="currentuser.role=='ROLE_ADMIN' || currentuser.role=='ROLE_USER' ">
+      <a href=""  style="color: black">Hi {{currentuser.email}}</a>  
+       </div> </li>
+     
+  
+      
+      
+     <li><div data-ng-hide="currentuser.role=='ROLE_ADMIN' || currentuser.role=='ROLE_USER'">
+      <a href="#!/login"  style="color: black">LOGIN</a>
+      </div></li>
+      
+      
+       <li><div data-ng-hide="currentuser.role=='ROLE_ADMIN' || currentuser.role=='ROLE_USER'">
+     <a href="#!/register"  style="color:black">REGISTER</a>
+      </div></li>
+      
+      
+      <li><div data-ng-show="currentuser.role=='ROLE_ADMIN' || currentuser.role=='ROLE_USER' ">
+     <a data-ng-click="logout()" data-ng-controller="logoutcontroller" style="color: black">LOGOUT</a>
+      </div></li>
+    
+  
+      
+        
+      
+      
+      
+      
+   
+    
+    </ul>
+  </div>
+</nav>
+
+
+
+</div>
+
+
+
+
+<div data-ng-view></div>
+
+
+
+ 
+
+<script src="js/main.js"></script>
+<script src="User/usercontroller.js"></script>
+<script src="Friend/friendcontroller.js"></script>
+<script src="Job/jobcontroller.js"></script>
+<script src="Blog/blogcontroller.js"></script>
+<script src="forum/forumcontroller.js"></script>
+<script src="chat/chatcontroller.js"></script>
+<script src="chat/charService.js"></script>
+<script src="Events/eventcontroller.js"></script>
+<script src="Notifications/notificationcontroller.js"></script>
+</body>
+</html>

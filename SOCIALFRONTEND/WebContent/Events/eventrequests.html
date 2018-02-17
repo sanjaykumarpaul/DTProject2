@@ -1,0 +1,33 @@
+<h4>EVENT REQUESTS</h4>
+<div data-ng-controller="eventrequestcontroller">
+
+<div class="card card-1" style="margin-top:25px;margin-right: 25px;margin-left: 25px">
+ <table>
+        <thead>
+          <tr>
+              <th>NAME</th>
+              <th>EVENT</th>
+              
+              <th></th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr  data-ng-repeat="eventreq in eventrequests">
+            <td>{{eventreq.username}}</td>
+            <td>{{eventreq.eventname}}</td>
+           
+            <td> <a data-ng-click="accepteventrequests(eventreq.eventid)"  ><img data-ng-src="http://localhost:8080/SOCIALFRONTEND/resources/images/approve.jpg" style="width:50px;height:50px">APPROVE</a> </td>
+                      <td>  <a data-ng-click="rejecteventrequests(eventreq.eventid)"  ><img data-ng-src="http://localhost:8080/SOCIALFRONTEND/resources/images/reject.png" style="width:50px;height:50px">REJECT</a> </td>
+          <td>  <a  data-ng-click="getEvent(eventreq.eventid)" ><img data-ng-src="http://localhost:8080/SOCIALFRONTEND/resources/images/view.png" style="width:50px;height:50px">VIEW </a>  </td>
+          </tr>
+       
+        </tbody>
+      </table>
+ 
+ 
+ 
+ 
+ </div>
+
+</div>

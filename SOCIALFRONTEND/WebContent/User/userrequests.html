@@ -1,0 +1,33 @@
+<div data-ng-controller="userrequestcontroller">
+
+<div class="card card-1" style="margin-top:25px;margin-right: 25px;margin-left: 25px">
+ <table>
+        <thead>
+          <tr>
+              <th>NAME</th>
+              
+              
+              <th></th>
+              <th></th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr  data-ng-repeat="userreq in userrequests">
+            <td>{{userreq.firstname}}   {{userreq.lastname}}</td>
+           
+           
+            <td>  <div class="btn-group"> <a data-ng-click="acceptuserrequests(userreq.email)"  class="btn btn-primary">ACCEPT</a></div> </td>
+                     <td>  <div class="btn-group"> <a data-ng-click="rejectuserrequests(userreq.email)"  class="btn btn-primary">REJECT</a></div> </td>
+         
+          </tr>
+       
+        </tbody>
+      </table>
+ 
+ 
+ 
+ 
+ </div>
+
+</div>

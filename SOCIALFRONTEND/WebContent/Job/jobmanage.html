@@ -1,0 +1,120 @@
+<h4>JOB MANAGE</h4>
+<div class="card card-1" style="margin-top:5vh;margin-left:50px;margin-right: 50px;padding-left: 20px; padding-right: 20px; padding-top: 20px; padding-bottom: 20px">
+  <div class="row">
+    <div class="col s12">
+      <ul class="tabs">
+        <li class="tab col s3"><a href="#test1">VIEW</a></li>
+        <li class="tab col s3"><a class="active" href="#test2">ADD JOB</a></li>
+        
+      </ul>
+    </div>
+    <div id="test1" class="col s12">
+    <div data-ng-controller="jobcontroller">
+    	
+    	<div class="card card-1" style="margin-top:5vh;padding-left: 20px; padding-right: 20px; padding-top: 20px; padding-bottom: 20px">
+    	
+    	 <table>
+<tr>
+<td>JOB NAME</td>
+<td></td>
+
+</tr>
+<tr data-ng-repeat="jobb in jobsdata">
+<td>{{jobb.jobprofile}}</td>
+<td>  <a href="" data-ng-click="getjob(jobb.jobid)"><img data-ng-src="http://localhost:8080/SOCIALFRONTEND/resources/images/view.png" style="width:50px;height:50px">VIEW</a></td>
+<td>       <div  data-ng-show="currentuser.role=='ROLE_ADMIN'"><a href="" data-ng-click=deletejob(jobb.jobid)><img data-ng-src="http://localhost:8080/SOCIALFRONTEND/resources/images/reject.png" style="width:50px;height:50px">DELETE</a></div></td>
+</tr>
+</table>
+    	 
+	</div>
+
+    </div>
+    </div>
+    <div id="test2" class="col s12">
+    
+    <div class="row">
+     
+        <div class="col m12">
+        <div class="card card-1" style="margin-top:5vh;padding-left: 20px; padding-right: 20px; padding-top: 20px; padding-bottom: 20px">
+            
+            <div class="row">
+            <div data-ng-controller="jobcontroller">
+                <form class="col s12" data-ng-submit="insertJobs()" >
+                   
+                           <div class="input-field col s6">  
+                           <div class="left-align">       
+                <input  type="text" id="jobprofile"  data-ng-model="Job.jobprofile" required >
+                            <label for="jobprofile">Job Profile</label>
+                             </div>
+                         </div>  
+                 
+                               <div class="input-field col s12">
+                   <textarea id="jobdesc" class="materialize-textarea" data-ng-model="Job.jobdesc" required></textarea>
+          <label for="jobdesc">Job Description</label>
+            </div>
+            
+            <div class="input-field col s12">
+                   <textarea id="jobqualifications" class="materialize-textarea" data-ng-model="Job.qualification" required></textarea>
+          <label for="jobqualifications">Job Qualifications</label>
+            </div>
+                              <div class="input-field col s6">  
+                             
+                <input  type="number" id="jobsalary"  data-ng-model="Job.salary" required >
+                            <label for="jobsalary">Job Salary</label>
+                         
+                         </div>
+                         
+                                <div class="input-field col s6">  
+                             
+                <input  type="text" id="company"  data-ng-model="Job.company" required >
+                            <label for="company">Company</label>
+                         
+                         </div>      
+                   
+                      <div class="input-field col s12">
+                   <textarea id="companydesc" class="materialize-textarea" data-ng-model="Job.companydesc" required></textarea>
+          <label for="jobqualifications">Company Description</label>
+            </div>
+                    
+                       <div class="input-field col s6">
+                            <p class="right-align">
+                                <button class="btn btn-large waves-effect waves-light" type="submit" >SUBMIT</button>
+                            </p>
+                        </div>
+                   
+                </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    	
+    	
+    	
+    	
+	</div>
+    
+    </div>
+   
+  </div>
+        
+   </div>     
+        
+        
+
+
+
+
+<script>
+$(document).ready(function(){
+    $('ul.tabs').tabs();
+  });
+       
+$(document).ready(function(){
+    // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
+    $('.modal').modal();
+  });
+     
+</script>

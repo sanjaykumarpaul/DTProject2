@@ -1,0 +1,225 @@
+<style>
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+   
+}
+.card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+.container {
+    padding: 2px 16px;
+}
+#cover
+{
+background-image: url("http://localhost:8080/SOCIALFRONTEND/resources/images/{{friendpreviewdata.cover}}");
+    background-repeat: no-repeat;
+     background-size: cover;
+     opacity:.9;
+     width:100%;
+     height:200px;
+}
+</style>
+
+<div class="row"  id="cover" data-ng-controller="friendcontroller">
+     <div class="col-md-11">
+    
+    <div class="media">
+                              <div class="media-left">
+                              <br>
+                              <img data-ng-src="http://localhost:8080/SOCIALFRONTEND/resources/images/{{friendpreviewdata.image}}" onerror="this.src='http://localhost:8080/SOCIALFRONTEND/resources/images/ava.jpg'"" style="width:100px;height:100px">
+         
+                              </div>
+                                    
+                              <div class="media-right" style="margin-left:100px">
+                              
+                              
+                              <h2>{{friendpreviewdata.firstname}}   {{friendpreviewdata.lastname}}</h2>
+                            <h2>{{friendpreviewdata.email}}</h2>
+                          
+                            
+       
+                            
+                              </div>
+                              
+                              
+                              </div>
+                              
+                              
+                              
+                           
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    </div>
+    </div>
+<div class="row" data-ng-controller="friendcontroller">
+    <div class="col s12">
+      <ul class="tabs">
+        <li class="tab col s3"><a href="#test1"> {{friendpreviewdata.firstname}}'s BLOGS</a></li>
+        <li class="tab col s3"><a  href="#test2"> {{friendpreviewdata.firstname}}'s FORUMS</a></li>
+        
+       
+       
+         <li  class="tab col s3"><a href="#test4">{{friendpreviewdata.firstname}}'s Friends</a></li>
+      
+      </ul>
+    </div>
+    <div id="test1" class="col s12">
+    
+   
+    
+   
+   <div data-ng-controller="friendcontroller">
+    <div data-ng-repeat="fblogs in friendblogs">
+    
+    
+    <div class="card card-1" style="margin-top:2vh; padding: 30px;margin-right: 5%" >
+           
+                    
+                            <div class="media">
+                              <div class="media-left">
+                                <a href="#">
+                                  <img class="media-object photo-profile" data-ng-src="http://localhost:8080/SOCIALFRONTEND/resources/images/{{fblogs.username}}.jpg" onerror="this.src='http://localhost:8080/SOCIALFRONTEND/resources/images/ava.jpg'" width="40" height="40" alt="...">
+                                </a>
+                              </div>
+                              <div class="media-body">
+                                <a href="#" class="anchor-username"><h4 class="media-heading">{{fblogs.username}}</h4></a> 
+                              
+                              </div>
+                            </div>
+             
+            
+                   <h3><b>{{fblogs.blogname}}</b></h3>
+                  
+                 
+              
+                 <div class="media">
+                  <div class="media-body">
+                  <h4>{{ fblogs.blogcontent | limitTo: 80 }}</h4>
+                  
+                  </div>
+                   <div class="media-right">
+            
+                 
+                   <div class="btn-group"> <a  data-ng-click="maximum(myblo.blogid)" class="btn btn-primary">{{fblogs.blogcontent.length > 60 ? 'READ FULL' : ''}}</a> </div>
+           
+           
+</div>
+  
+</div>
+<div class="row">
+<div class="col-s3">{{fblogs.likes}}   Likes</div>
+<div class="col-s3">{{fblogs.views}}  Views </div>
+</div>
+</div>
+    
+    
+    </div>
+    </div>
+    
+    
+    
+    </div>
+    <div id="test2" class="col s12">
+<div data-ng-controller="friendcontroller">
+<div data-ng-repeat="fforums in friendforums">
+    
+    
+    <div class="card card-1" style="margin-top:2vh; padding: 30px;margin-right: 5%" >
+           
+                    
+                            <div class="media">
+                              <div class="media-left">
+                                <a href="#">
+                                  <img class="media-object photo-profile" src="http://0.gravatar.com/avatar/38d618563e55e6082adf4c8f8c13f3e4?s=40&d=mm&r=g" width="40" height="40" alt="...">
+                                </a>
+                              </div>
+                              <div class="media-body">
+                                <a href="#" class="anchor-username"><h4 class="media-heading">ADMIN</h4></a> 
+                              
+                              </div>
+                            </div>
+             
+            
+                   <h3><b>{{fforums.formname}}</b></h3>
+                  
+                
+              
+                 <div class="media">
+                  <div class="media-body">
+                  <h4>{{ fforums.formcontent | limitTo: 80 }}</h4>
+                  
+                  </div>
+                   <div class="media-right">
+            
+                 
+                   <div class="btn-group"> <a  data-ng-click="fetchforumbyid(fforums.forumid)" class="btn btn-primary">{{fforums.formcontent.length > 60 ? 'READ FULL' : ''}}</a> </div>
+           
+           
+</div>
+  
+</div>
+</div>
+    
+    
+    </div>
+    </div>
+    
+    
+    
+    
+    
+    </div>
+     <div id="test4" class="col s12">
+    
+    
+    
+    <div class="col s12">
+     
+     List contains only the users you are not yet become friends
+           <div data-ng-repeat="other in friendsfriends">
+     <div class="col-lg-3 col-sm-3 hero-feature text-center">
+      
+        <!-- Thumbnail Images -->
+        <div class="thumbnail">  <img data-ng-src="http://localhost:8080/SOCIALFRONTEND/resources/images/{{other.email}}"  onerror="this.src='http://localhost:8080/SOCIALFRONTEND/resources/images/ava.jpg'" alt="Avatar" style="width:50px;height:50px"> 
+          <!-- Offer Tag-->
+       
+          <div class="caption prod-caption"> 
+            <div class="pro-name">{{other.firstname}}  {{other.lastname}}</div>
+           
+            <p>
+           
+            </p><div class="btn-group"> <a data-ng-click="insertFriend(other.userid)" class="btn btn-primary">ADD FRIEND</a> </div>
+          </div>
+        </div>
+</div>
+     
+  </div>
+     
+     
+    </div>
+    
+    
+    
+    
+      
+      
+</div>
+</div>
+   <script>
+   $(document).ready(function(){
+	    $('ul.tabs').tabs();
+	  });
+	        
+</script>

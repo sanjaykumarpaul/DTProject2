@@ -1,0 +1,186 @@
+<style>
+.sqs-block { 
+      margin-left: -30px; 
+      margin-right: -30px; 
+      margin-top: -30px; 
+      margin-bottom: -30px; 
+      }
+      
+input{ 
+      margin-left: 5px; 
+      margin-right: 5px; 
+      margin-top: 5px; 
+      margin-bottom: 5px; 
+      }
+      
+      
+      /*-- Global Selectors --*/
+a{
+    color:#47649F;
+}
+body{
+    font-family:'cursive';  
+    font-size: 20px;  
+}
+/*-- Bootstrap Override Style --*/
+/*-- Content Style --*/
+.post-footer-option li{
+    float:left;
+    margin-right:50px;
+    padding-bottom:15px;
+}
+.post-footer-option li a{
+    color:#AFB4BD;
+    font-weight:500;
+    font-size:1.3rem;
+}
+.photo-profile{
+    border:1px solid #DDD;    
+}
+.anchor-username h4{
+    font-weight:bold;    
+}
+.anchor-time{
+    color:#ADB2BB;
+    font-size:1.2rem;
+}
+.post-footer-comment-wrapper{
+    background-color:#F6F7F8;
+}
+      </style>
+      
+      <div data-ng-controller="blogcontroller">
+      
+      
+   
+ <h4>BLOG VIEW</h4>     
+<div class="card card-1" style="margin-top:5vh;margin-left: 5vh;margin-right: 5vh">
+
+
+	<div class="col-md-10">
+       
+               <section class="post-heading">
+                    <div class="row">
+                    
+                    
+                    
+                    
+                        <div class="col-md-11">
+                            <div class="media">
+                              <div class="media-left">
+                                <a href="#">
+                                  <img class="media-object photo-profile" data-ng-src="http://localhost:8080/SOCIALFRONTEND/resources/images/{{gblog.username}}.jpg" onerror="this.src='http://localhost:8080/SOCIALFRONTEND/resources/images/ava.jpg'" width="32" height="32" alt="..." width="40" height="40" alt="...">
+                                </a>
+                              </div>
+                              <div class="media-body">
+                                <a href="#" class="anchor-username"><h4 style="font-size:25px"><b>{{gblog.username}}</b></h4></a> 
+                               
+                              </div>
+                            </div>
+                        </div>
+                      
+                    </div>             
+               </section>
+                 <section >
+               
+                   <p ><b>{{gblog.blogname}}</b></p>
+               </section>
+               <section class="post-body">
+                   <p>{{gblog.blogcontent}}</p>
+                   
+                   
+                   <h4><b>LIKES</b>{{gblog.likes}}        <b>Views</b>{{gblog.views}}</h4>
+               </section>
+               <section class="post-footer">
+                   <hr>
+                   <div class="post-footer-option container">
+                        <ul class="list-unstyled">
+                       
+                            
+                            
+                              <li><div  data-ng-hide="currentuser.email==gblog.username"><a href="" data-ng-click="likeBlog(gblog.blogid)"><img data-ng-src="http://localhost:8080/SOCIALFRONTEND/resources/images/like.png" style="width:50px;height:50px">Like</a></div></li>
+                               <li><div  data-ng-show="currentuser.role=='ROLE_ADMIN' && gblog.status=='YES'"><a href="" data-ng-click="rejectblogrequests(gblog.blogid)"><img data-ng-src="http://localhost:8080/SOCIALFRONTEND/resources/images/reject.png" style="width:50px;height:50px">REJECT</a></div></li>
+                                <li><div  data-ng-show="currentuser.role=='ROLE_ADMIN' && gblog.status=='A'"><a href="" data-ng-click="acceptblogrequests(gblog.blogid)"><img data-ng-src="http://localhost:8080/SOCIALFRONTEND/resources/images/approve.jpg" style="width:50px;height:50px">APPROVE</a></div></li>
+                                 <li><div   data-ng-show="currentuser.role=='ROLE_ADMIN' && gblog.status=='NO'"><a href="" data-ng-click="acceptblogrequests(gblog.blogid)"><img data-ng-src="http://localhost:8080/SOCIALFRONTEND/resources/images/approve.jpg" style="width:50px;height:50px">APPROVE</a></div></li>
+                              <li><div  data-ng-show="currentuser.email==gblog.username"><a href="" data-ng-click="deleteBlog(gblog.blogid)"><img data-ng-src="http://localhost:8080/SOCIALFRONTEND/resources/images/reject.png" style="width:50px;height:50px">DELETE</a></div></li>
+                              <li><div  data-ng-show="currentuser.email==gblog.username"><a href="" data-ng-click=fetchforedit(gblog.blogid)><img data-ng-src="http://localhost:8080/SOCIALFRONTEND/resources/images/edit.ico" style="width:50px;height:50px">EDIT</a></div></li>                          </ul>
+                   </div>
+                   <div class="post-footer-comment-wrapper">
+                       <div class="comment-form">
+                           
+                       </div>
+                       <div class="comment">
+                            <div class="media">
+                              
+                              <div class="media-body">
+                               
+                              
+                                 <h3>Comments</h3>
+                                 
+                                <div class="row">
+                                 <form class="col s12" data-ng-submit="addBlogComment()" >
+                                
+                                
+                                <div class="input-field col s6">  
+                           <div class="left-align">       
+                <input  type="text" id="blogcomment"  data-ng-model="BlogComments.blogcomm" required >
+                            <label for="blogcomment">Type your opinion</label>
+                             </div>
+                         </div>  
+                         
+                         
+                              <div class="input-field col s6">
+                            <p class="right-align">
+                                <button class="btn btn-large waves-effect waves-light" type="submit" >SUBMIT</button>
+                            </p>
+                        </div> 
+                                </form>
+                                </div>
+                              
+                                <div data-ng-repeat="comm in gblogcomm">
+                                
+                                
+                                
+                                
+                                <section class="post-heading">
+                    <div class="row">
+                    
+                    
+                    
+                    
+                        <div class="col-md-11">
+                            <div class="media">
+                              <div class="media-left">
+                                <a href="#">
+                                  <img class="media-object photo-profile" data-ng-src="http://localhost:8080/SOCIALFRONTEND/resources/images/{{comm.username}}.jpg" onerror="this.src='http://localhost:8080/SOCIALFRONTEND/resources/images/ava.jpg'" width="32" height="32" alt="...">
+                                </a>
+                              </div>
+                              <div class="media-body">
+                                <h4>{{comm.username}}</h4>
+                                 <h4>{{comm.blogcomm}}</h4>
+                               
+                              </div>
+                            </div>
+                        </div>
+                      
+                    </div>             
+               </section>
+               
+               
+               
+               
+                                
+                                </div>
+                              </div>
+                            </div>
+                       </div>
+                   </div>
+               </section>
+          
+	</div>
+
+
+</div>
+
+
+</div>

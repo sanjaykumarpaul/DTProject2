@@ -1,0 +1,44 @@
+<h4>CREATE A FORUM</h4>
+<div class="container">
+    <div class="row">
+     <h1>CREATE YOUR FORUM</h1>
+        <div class="col m12">
+        <div class="card card-1" style="margin-top:15vh;height:60vh">
+            
+            <div class="row">
+            <div data-ng-controller="forumcontroller">
+                <form class="col s12" data-ng-submit="addForum()" >
+                   
+                           <div class="input-field col s6">  
+                           <div class="left-align">       
+                <input  type="text" id="forumname"  data-ng-model="Forum.formname" required >
+                            <label for="forumname">Forum Name</label>
+                             </div>
+                         </div>  
+                 
+                               <div class="input-field col s12">
+                  
+                  
+                   <textarea id="forumcontent" class="materialize-textarea" data-ng-model="Forum.formcontent" required></textarea>
+          <label for="forumcontent">Textarea</label>
+          
+          
+            </div>
+                   
+                   
+                    
+                    
+                       <div class="input-field col s6">
+                            <p class="right-align">
+                                <button class="btn btn-large waves-effect waves-light" type="submit" >SUBMIT</button>
+                            </p>
+                        </div>
+                   
+                </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</div>

@@ -1,0 +1,418 @@
+<style>
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+   
+}
+.card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+.container {
+    padding: 2px 16px;
+}
+#cover
+{
+background-image: url("http://localhost:8080/SOCIALFRONTEND/resources/images/{{currentuser.cover}}");
+    background-repeat: no-repeat;
+     background-size: cover;
+     opacity:.9;
+     width:100%;
+     height:200px;
+}
+</style>
+
+<div class="row"  id="cover">
+     <div class="col-md-11">
+    
+    <div class="media">
+                              <div class="media-left">
+                              <br>
+                              <img data-ng-src="http://localhost:8080/SOCIALFRONTEND/resources/images/{{currentuser.image}}" onerror="this.src='http://localhost:8080/SOCIALFRONTEND/resources/images/ava.jpg'" style="width:100px;height:100px">
+                              <form method="POST" enctype="multipart/form-data" action="http://localhost:8080/SOCIALRESTCONTROLLER/user/up">
+                  
+                    <input type="file" name="uploadedFile" value="Profile pic">
+                
+                    <input type="submit" value="UPLOAD">
+             </form>
+                              </div>
+                                    
+                              <div class="media-right" style="margin-left:100px">
+                              
+                              
+                              <h2>{{currentuser.firstname}}   {{currentuser.lastname}}</h2>
+                            <h2>{{currentuser.email}}</h2>
+                            <b>Edit details</b>
+                            
+                                            <form method="POST" enctype="multipart/form-data" action="http://localhost:8080/SOCIALRESTCONTROLLER/user/upcover">
+              
+                    <input type="file" name="uploadedFile" value="cover image">
+           
+                    <input type="submit" value="UPLOAD">
+             </form>
+                            
+                              </div>
+                              
+                              
+                              </div>
+                              
+                              
+                              
+                           
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    </div>
+    </div>
+
+<div class="row">
+    <div class="col s12">
+      <ul class="tabs">
+        <li class="tab col s3"><a href="#test1">MY BLOGS</a></li>
+        <li class="tab col s3"><a  href="#test2">MY FORUMS</a></li>
+        
+       
+        <li  class="tab col s3"><a href="#test3">MY JOBS/MY EVENTS</a></li>
+         <li  class="tab col s3"><a href="#test4"> SEARCH FRIENDS</a></li>
+      
+      </ul>
+    </div>
+    <div id="test1" class="col s12">
+    
+    <div  data-ng-hide="currentuser.role=='ROLE_ADMIN'"><center><a href="#!/newblog"><img data-ng-src="http://localhost:8080/SOCIALFRONTEND/resources/images/pencil.png" style="width:50px;height:50px"><h2>Writeblog</h2></a></center></div>
+    
+   
+   <div data-ng-controller="blogcontroller">
+    <div data-ng-repeat="myblo in myblogs">
+    
+    
+    <div class="card card-1" style="margin-top:2vh; padding: 30px;margin-right: 5%" >
+
+
+           
+                    
+                            <div class="media">
+                              <div class="media-left">
+                                <a href="#">
+                                  <img class="media-object photo-profile" data-ng-src="http://localhost:8080/SOCIALFRONTEND/resources/images/{{myblo.username}}.jpg" onerror="this.src='http://localhost:8080/SOCIALFRONTEND/resources/images/ava.jpg'" width="40" height="40" alt="...">
+                                </a>
+                              </div>
+                              <div class="media-body">
+                                <a href="#" class="anchor-username"><h4 class="media-heading">{{myblo.username}}</h4></a> 
+                              
+                              </div>
+                            </div>
+             
+            
+                   <h3><b>{{myblo.blogname}}</b></h3>
+                  
+                 <div data-ng-show="myblo.status=='A'">PENDING APPROVAL</div>
+                 <div data-ng-show="myblo.status=='YES'">APPROVED BLOG</div>
+                  <div data-ng-show="myblo.status=='NO'">REJECTED BLOG</div>
+              
+                 <div class="media">
+                  <div class="media-body">
+                  <h4>{{ myblo.blogcontent | limitTo: 80 }}</h4>
+                  
+                  </div>
+                   <div class="media-right">
+            
+                 
+                   <div class="btn-group"> <a  data-ng-click="maximum(myblo.blogid)" class="btn btn-primary">{{myblo.blogcontent.length > 60 ? 'READ FULL' : ''}}</a> </div>
+           
+           
+</div>
+  
+</div>
+<div class="row">
+
+<div class="col-s3">{{myblo.likes}}   Likes</div>
+
+<div class="col-s3">{{myblo.views}}  Views </div>
+</div>
+</div>
+    
+    
+    </div>
+    
+    </div>
+    
+    </div>
+    <div id="test2" class="col s12">
+
+                 <div  data-ng-show="currentuser.role=='ROLE_ADMIN'"><center><a href="#!/newforum"><img data-ng-src="http://localhost:8080/SOCIALFRONTEND/resources/images/forum.jpg" style="width:50px;height:50px"><h2>Start forum </h2></a></center></div>
+
+
+<div data-ng-controller="forumcontroller">
+<div data-ng-repeat="myfor in myforum">
+    
+    
+    <div class="card card-1" style="margin-top:2vh; padding: 30px;margin-right: 5%" >
+
+
+           
+                    
+                            <div class="media">
+                              <div class="media-left">
+                                <a href="#">
+                                  <img class="media-object photo-profile" src="http://0.gravatar.com/avatar/38d618563e55e6082adf4c8f8c13f3e4?s=40&d=mm&r=g" width="40" height="40" alt="...">
+                                </a>
+                              </div>
+                              <div class="media-body">
+                                <a href="#" class="anchor-username"><h4 class="media-heading">ADMIN</h4></a> 
+                              
+                              </div>
+                            </div>
+             
+            
+                   <h3><b>{{myfor.formname}}</b></h3>
+                  
+                
+              
+                 <div class="media">
+                  <div class="media-body">
+                  <h4>{{ myfor.formcontent | limitTo: 80 }}</h4>
+                  
+                  </div>
+                   <div class="media-right">
+            
+                 
+                   <div class="btn-group"> <a  data-ng-click="fetchforumbyid(myfor.forumid)" class="btn btn-primary">{{myfor.formcontent.length > 60 ? 'READ FULL' : ''}}</a> </div>
+           
+           
+</div>
+  
+</div>
+
+</div>
+    
+    
+    </div>
+    
+    </div>
+    
+    
+    
+
+    </div>
+    <div id="test3" class="col s12">
+   
+   
+     <div class="col s12">
+      <ul class="tabs">
+        <li class="tab col s6"><a href="#test5">MY JOBS</a></li>
+        <li class="tab col s6"><a  href="#test6">MY EVENTS</a></li>
+        
+      </ul>
+    </div>
+     <div id="test5" class="col s12">
+     <div data-ng-controller="jobcontroller">
+     
+                 <div  data-ng-show="currentuser.role=='ROLE_ADMIN'"><center><a href="#!/newjob"><img data-ng-src="http://localhost:8080/SOCIALFRONTEND/resources/images/job.png" style="width:50px;height:50px"><h2>Add Job</h2></a></center></div>
+     
+     <div data-ng-repeat="jobb in myjobs">
+     
+     
+     <div class="card card-1" style="margin-top:5vh;padding-left: 20px; padding-right: 20px; padding-top: 20px; padding-bottom: 20px">
+    	
+    	     	 <h3><b>{{jobb.company}}</b></h3>
+    	 <h3>Post for {{jobb.jobprofile}}</h3>
+    	
+    	                  <div class="media">
+               
+                   <div class="media-left">
+                   <div class="btn-group"> <a  data-ng-click="getjob(jobb.jobid)" class="btn btn-primary">VIEW </a> </div>
+           
+</div>
+  
+</div>
+	</div>
+	
+	
+     
+     </div>
+     </div>
+     
+     
+     </div>
+      <div id="test6" class="col s12">
+     
+      
+      
+      
+           <div data-ng-controller="eventcontroller">
+            <div ><center><a href="#!/newevent"><img data-ng-src="http://localhost:8080/SOCIALFRONTEND/resources/images/event.png" style="width:50px;height:50px"><h2>Plan event</h2></a></center></div>
+     <div data-ng-repeat="eventt in myevents">
+     
+     
+     <div class="card card-1" style="margin-top:5vh;padding-left: 20px; padding-right: 20px; padding-top: 20px; padding-bottom: 20px">
+    	
+    	     	 <h3><b>{{eventt.eventname}}</b></h3>
+    	 <h3>Hosted by:---{{eventt.username}}</h3>
+    	  <div data-ng-show="eventt.status=='P'">PENDING APPROVAL</div>
+    	
+    	                  <div class="media">
+               
+                   <div class="media-left">
+                   <div class="btn-group"> <a  data-ng-click="getEvent(eventt.eventid)" class="btn btn-primary">VIEW </a> </div>
+           
+</div>
+  
+</div>
+	</div>
+	
+	
+     
+     </div>
+     </div>
+     
+     
+     
+      </div>
+    </div>
+     <div id="test4" class="col s12">
+    
+    
+    
+    <div class="col s12">
+      <ul class="tabs">
+        <li class="tab col s4"><a href="#test7">MY FRIENDS</a></li>
+        <li class="tab col s4"><a  href="#test8">MAKE FRIENDS</a></li>
+        <li class="tab col s4"><a  href="#test9">MY FRIEND REQUESTS</a></li>
+        
+      </ul>
+    </div>
+    
+    
+    
+     <div id="test7" class="col s12">
+     
+     <div data-ng-controller="friendcontroller">
+    
+     
+     <div data-ng-repeat="myfri in myfriends">
+
+     <div data-ng-hide="currentuser.role=='ROLE_ADMIN'">
+     
+          <div class="col-lg-3 col-sm-3 hero-feature text-center">
+
+
+
+      
+        <!-- Thumbnail Images -->
+        <div class="thumbnail">  <img data-ng-src="http://localhost:8080/SOCIALFRONTEND/resources/images/{{myfri.image}}"  onerror="this.src='http://localhost:8080/SOCIALFRONTEND/resources/images/ava.jpg'" alt="Avatar" style="width:50px;height:50px"> 
+          <!-- Offer Tag-->
+       
+          <div class="caption prod-caption"> 
+            <div class="pro-name">{{myfri.firstname}}  {{myfri.lastname}}</div>
+           
+            <p>
+           
+            </p><div class="btn-group"> <a  data-ng-click="unfriend(myfri.userid)" class="btn btn-primary">UNFRIEND</a> </div>
+          </div>
+        </div>
+</div>
+    
+     
+     </div>
+ 
+     
+     </div>
+ </div>
+     
+   </div> 
+    
+    
+      <div id="test8" class="col s12">
+      
+  <div data-ng-controller="friendcontroller">    
+ 
+      <div data-ng-repeat="other in otherusers">
+      
+      
+       <div data-ng-hide="currentuser.role=='ROLE_ADMIN'">
+           <div class="col-lg-3 col-sm-3 hero-feature text-center">
+
+
+
+      
+        <!-- Thumbnail Images -->
+        <div class="thumbnail">  <img  data-ng-src="http://localhost:8080/SOCIALFRONTEND/resources/images/{{other.image}}" onerror="this.src='http://localhost:8080/SOCIALFRONTEND/resources/images/ava.jpg'" alt="Avatar" style="width:50px;height:50px"> 
+          <!-- Offer Tag-->
+       
+          <div class="caption prod-caption"> 
+            <div class="pro-name">{{other.firstname}}  {{other.lastname}}</div>
+           
+            <p>
+           
+            </p><div class="btn-group"> <a data-ng-click="insertFriend(other.userid)" class="btn btn-primary">ADD FRIEND</a> </div>
+          </div>
+        </div>
+</div>
+       
+       </div>
+ 
+     
+  </div>
+      
+      </div>
+      </div>
+      
+      
+      
+         <div id="test9" class="col s12">
+         
+         
+         <div data-ng-controller="friendcontroller">
+          
+          
+           
+           <div data-ng-repeat="reqs in myfriendreqs">
+
+<div data-ng-hide="currentuser.role=='ROLE_ADMIN'">
+
+     <div class="col-lg-3 col-sm-3 hero-feature text-center">
+
+
+
+      
+        <!-- Thumbnail Images -->
+        <div class="thumbnail">  <img data-ng-src="http://localhost:8080/SOCIALFRONTEND/resources/images/{{reqs.image}}" onerror="this.src='http://localhost:8080/SOCIALFRONTEND/resources/images/ava.jpg'" alt="Avatar" style="width:50px;height:50px"> 
+          <!-- Offer Tag-->
+       
+          <div class="caption prod-caption"> 
+            <div class="pro-name">{{reqs.firstname}}  {{reqs.lastname}}</div>
+           
+            <p>
+           
+            </p><div class="btn-group"> <a data-ng-click="acceptfriend(reqs.userid)" class="btn btn-primary">ACCEPT</a> </div>
+          </div>
+        </div>
+</div>
+     
+</div>
+
+     
+     
+  </div>
+      
+      </div>
+    
+    </div>
+</div>
+</div>
+   <script>
+   $(document).ready(function(){
+	    $('ul.tabs').tabs();
+	  });
+	        
+</script>
